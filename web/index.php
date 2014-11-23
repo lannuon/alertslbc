@@ -70,6 +70,7 @@ $app->post('/users/login', function (Application $application, Request $request)
         $password = $request->get('password');
 
         $dbUser = $userRepository->checkCredential($email, $password);
+        var_dump("dbUser :: " . $dbUser == null);
 
         if ($dbUser != null)
         {
@@ -77,7 +78,6 @@ $app->post('/users/login', function (Application $application, Request $request)
         }else{
             $application->json(null, 404);
         }
-
     }
 );
 

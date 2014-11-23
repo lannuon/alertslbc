@@ -42,10 +42,7 @@ class User implements UserInterface {
         $this->email = $email;
         $this->createAt = new DateTime();
 
-        $generator = new SecureRandom();
-        $salt = $generator->nextBytes(30);
-        $this->salt = $salt;
-
+        $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
     }
 
 
@@ -137,7 +134,7 @@ class User implements UserInterface {
      */
     public function getSalt()
     {
-        return $this->getSalt();
+        return $this->salt;
     }
 
     /**

@@ -10,6 +10,7 @@ namespace repositories;
 
 use app\entities\User;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
+use Symfony\Component\Security\Core\Util\StringUtils;
 
 /**
  * Class UserRepository
@@ -31,6 +32,7 @@ class UserRepository {
         $dbUser = $this->findUserByEmail($email);
         if ($dbUser != null)
         {
+            var_dump($dbUser->getSalt());
             $hashPassword = $this->encodePassword($password, $dbUser->getSalt());
             if (StringUtils::equals($hashPassword, $dbUser->getPassword()))
             {
