@@ -12,9 +12,9 @@ namespace app\entities;
 use DateTime;
 use Symfony\Component\Security\Core\Role\Role;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\Util\SecureRandom;
 
-class User implements UserInterface {
+class User implements UserInterface
+{
     /**
      * @var integer
      */
@@ -91,21 +91,25 @@ class User implements UserInterface {
 
     /**
      * @param string $email
+     *
      * @return this
      */
     public function setEmail($email)
     {
         $this->email = $email;
+
         return $this;
     }
 
     /**
      * @param string $password
+     *
      * @return this
      */
     public function setPassword($password)
     {
         $this->password = $password;
+
         return $this;
     }
 

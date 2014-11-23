@@ -6,7 +6,7 @@
  * Time: 17:19
  */
 
-namespace repositories;
+namespace app\repositories;
 
 use app\entities\User;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
@@ -20,7 +20,8 @@ use Symfony\Component\Security\Core\Util\StringUtils;
  *
  * @package app\repositories
  */
-class UserRepository {
+class UserRepository
+{
 
     public function isValidUser(User $user)
     {
@@ -30,22 +31,21 @@ class UserRepository {
     public function checkCredential($email, $password)
     {
         $dbUser = $this->findUserByEmail($email);
-        if ($dbUser != null)
-        {
-            var_dump($dbUser->getSalt());
+        if ($dbUser != null) {
             $hashPassword = $this->encodePassword($password, $dbUser->getSalt());
-            if (StringUtils::equals($hashPassword, $dbUser->getPassword()))
-            {
+            if (StringUtils::equals($hashPassword, $dbUser->getPassword())) {
                 return $dbUser;
             }
         }
+
         return null;
 
     }
 
     public function encodePassword($password, $salt)
     {
-        $encoder =  new MessageDigestPasswordEncoder();
+        $encoder = new MessageDigestPasswordEncoder();
+
         return $encoder->encodePassword($password, $salt);
     }
 
@@ -56,6 +56,7 @@ class UserRepository {
 
     /**
      * @param $email
+     *
      * @return User
      */
     public function findUserByEmail($email)
