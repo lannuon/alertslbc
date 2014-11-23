@@ -18,7 +18,7 @@ use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
  * Is a service object used to manipulate the User object
  * in order to split data modelling and logical implementation
  *
- * @package app\services
+ * @package app\repositories
  */
 class UserService {
 

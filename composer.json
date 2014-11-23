@@ -7,7 +7,7 @@
 		"psr-0": {"AlertsLBC": "app/"},
         "classMap": [
             "app/controllers",
-            "app/services",
+            "app/repositories",
             "app/entities"
 
         ]
