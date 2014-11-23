@@ -42,6 +42,7 @@ class User implements UserInterface
         $this->email = $email;
         $this->createAt = new DateTime();
 
+        // TODO change salt random generation (use Symfony library)
         $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
     }
 

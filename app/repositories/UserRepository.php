@@ -8,6 +8,7 @@
 
 namespace app\repositories;
 
+
 use app\entities\User;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 use Symfony\Component\Security\Core\Util\StringUtils;
@@ -22,6 +23,7 @@ use Symfony\Component\Security\Core\Util\StringUtils;
  */
 class UserRepository
 {
+
 
     public function isValidUser(User $user)
     {
@@ -45,12 +47,12 @@ class UserRepository
     public function encodePassword($password, $salt)
     {
         $encoder = new MessageDigestPasswordEncoder();
-
         return $encoder->encodePassword($password, $salt);
     }
 
     public function createUser(User $user)
     {
+//        $user->
         //return $user. ...
     }
 

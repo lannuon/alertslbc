@@ -13,13 +13,12 @@ $app = new Silex\Application();
 
 require __DIR__ . '/../app/conf/dev.php';
 //require __DIR__.'/../app/app.php';
-//require __DIR__.'/../app/routes.php';
+require __DIR__ . '/../app/routes.php';
 
 // ... definitions
 use Silex\Application;
 
 // login
-$app->post('/users/login','app\controllers\UsersController::login');
 
 
 /*$blogPosts = [
@@ -61,7 +60,6 @@ $app->get('/blog/{id}', function (Silex\Application $app, $id) use ($blogPosts) 
     return "<h1>{$post['title']}</h1>" .
     "<p>{$post['body']}</p>";
 });*/
-
 
 
 $app->run();
