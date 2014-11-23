@@ -18,22 +18,22 @@ require __DIR__.'/../app/conf/dev.php';
 // ... definitions
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
-use app\services\UserService;
+use repositories\UserRepository;
 
-$blogPosts = array(
-    1 => array(
+$blogPosts = [
+    1 => [
         'date'      => '2011-03-29',
         'author'    => 'igorw',
         'title'     => 'Using Silex',
         'body'      => '...',
-    ),
-    2 => array(
+    ],
+    2 => [
         'date'      => '2011-03-30',
         'author'    => 'manu',
         'title'     => 'testing Silex',
         'body'      => '... blabla',
-    ),
-);
+    ],
+];
 
 //static routing
 $app->get('/blog', function () use ($blogPosts) {
@@ -64,12 +64,12 @@ $app->get('/blog/{id}', function (Silex\Application $app, $id) use ($blogPosts) 
 // login
 $app->post('/users/login', function (Application $application, Request $request)
     {
-        $userService = new UserService() ;
+        $userRepository = new UserRepository();
 
         $email = $request->get('email');
         $password = $request->get('password');
 
-        $dbUser = $userService->checkCredential($email, $password);
+        $dbUser = $userRepository->checkCredential($email, $password);
 
         if ($dbUser != null)
         {

@@ -5,30 +5,28 @@
  * Date: 22/11/2014
  * Time: 17:19
  */
-namespace app\services;
 
-
+namespace repositories;
 
 use app\entities\User;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
 /**
- * Class UserService
+ * Class UserRepository
  *
  * Is a service object used to manipulate the User object
  * in order to split data modelling and logical implementation
  *
  * @package app\repositories
  */
-class UserService {
-
+class UserRepository {
 
     public function isValidUser(User $user)
     {
 
     }
 
-    public function checkCredential(string $email, string $password)
+    public function checkCredential($email, $password)
     {
         $dbUser = $this->findUserByEmail($email);
         if ($dbUser != null)
@@ -43,7 +41,7 @@ class UserService {
 
     }
 
-    public function encodePassword(string $password, string $salt)
+    public function encodePassword($password, $salt)
     {
         $encoder =  new MessageDigestPasswordEncoder();
         return $encoder->encodePassword($password, $salt);
@@ -60,8 +58,8 @@ class UserService {
      */
     public function findUserByEmail($email)
     {
-        return new User();
+        return new User($email);
     }
 
 
-} 
+}
